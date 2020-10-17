@@ -12,7 +12,7 @@ namespace NLayerProject.Core.Model
         {
             Products = new Collection<Product>(); //ilk oluşturuldupunda boi bir tane collenction nesnesi oluşturuyor 
         }
-        public int Id { get; set; }
+        public int Id { get; set; } //aa
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
 
