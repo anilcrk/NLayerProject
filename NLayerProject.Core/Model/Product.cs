@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace NLayerProject.Core.Model
 {
@@ -14,7 +15,6 @@ namespace NLayerProject.Core.Model
         public bool IsDeleted { get; set; }
 
         public string InnerBarcode { get; set; }
-
         public virtual Category Category { get; set; } //Category tablosuna referans veriyoruz çünkü ef kategori üzerinde izleme yapabilsin ve kayıt altına akınabilsin
     }
 }
