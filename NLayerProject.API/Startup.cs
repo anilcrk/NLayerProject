@@ -66,11 +66,13 @@ namespace NLayerProject.API
 
 
 
-            ServicePointManager.ServerCertificateValidationCallback +=
-      (sender, certificate, chain, errors) =>
-      {
-          return true;
-      };
+      //      ServicePointManager.ServerCertificateValidationCallback +=
+      //(sender, certificate, chain, errors) =>
+      //{
+      //    return true;
+      //};
+
+
 
         }
 
