@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NLayerProject.Data.EntityFramework;
 
 namespace NLayerProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201028211352_AddCountriesTable")]
+    partial class AddCountriesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,6 +61,8 @@ namespace NLayerProject.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
+                        .HasAnnotation("SqlServer:IdentityIncrement", 1)
+                        .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Iso")
@@ -81,17 +85,6 @@ namespace NLayerProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Iso = "AF",
-                            Iso3 = "AFG",
-                            Name = "Afghanistan",
-                            NumCode = 4,
-                            PhoneCode = 93
-                        });
                 });
 
             modelBuilder.Entity("NLayerProject.Core.Model.Person", b =>
@@ -198,54 +191,7 @@ namespace NLayerProject.Data.Migrations
                             Name = "Kareli Defter",
                             Price = 12.50m,
                             Stock = 100
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CategoryId = 2,
-                            IsDeleted = false,
-                            Name = "Kareli Defter2",
-                            Price = 12.50m,
-                            Stock = 100
                         });
-                });
-
-            modelBuilder.Entity("NLayerProject.Core.Model.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserRoleId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserRoleId");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("NLayerProject.Core.Model.UserRole", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("NLayerProject.Core.Model.Product", b =>
@@ -253,15 +199,6 @@ namespace NLayerProject.Data.Migrations
                     b.HasOne("NLayerProject.Core.Model.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("NLayerProject.Core.Model.User", b =>
-                {
-                    b.HasOne("NLayerProject.Core.Model.UserRole", "UserRole")
-                        .WithMany("Users")
-                        .HasForeignKey("UserRoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

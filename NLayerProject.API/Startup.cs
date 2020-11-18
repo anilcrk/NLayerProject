@@ -86,7 +86,7 @@ namespace NLayerProject.API
 
             app.UseCustomException();//extension custom method
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

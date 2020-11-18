@@ -57,6 +57,14 @@ namespace NLayerProject.Data.EntityFramework.Seed
                     Stock = 100,
                     CategoryId = _ids[1]
                 }
+                , new Product
+                {
+                    Id = 6,
+                    Name = "Kareli Defter2",
+                    Price = 12.50m,
+                    Stock = 100,
+                    CategoryId = _ids[1]
+                }
 
 
                 );
